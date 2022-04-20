@@ -33,7 +33,7 @@ class Bibliotheque:
        self.name = name
        self.collection = collection
 
-    def BuyBook(self, author: object, book : object):
+    def BuyBook(self, author: object, book : Book):
         if book.title in author.listCollection():
             self.collection.append(book.title)                                
         else:
@@ -42,7 +42,18 @@ class Bibliotheque:
     def Inventory(self):
         print('La bibiothèque contient actuellement' , len(self.collection) , 'livre')
         for book in self.collection:
-            print(book)         
+            print(book)      
+
+    def rent(self, client: object , book: object):
+        if book.title in self.collection and book.quantity != 0:
+            client.collection.append(book.title) 
+            book.quantity = book.quantity - 1   
+        else:
+            print('Ce livre n\'existe pas ou n\'est plus en stock')    
+
+    def giveBook(client: object):
+        return 0 # a finir 
+
 
 
 author1 = Author('Akira', 'Toriyama' , [])
@@ -66,6 +77,9 @@ book3 = Book('Les trois mousquetaires', author3, 5)
 
 author4 = Author('Honoré ', 'de Balzac' , [])
 book4 = Book('La peau de chagrin', author4, 0)
+
+client = Client('Bruce' , 'Wayne')
+
 
 
 
