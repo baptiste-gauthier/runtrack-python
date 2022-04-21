@@ -18,7 +18,7 @@ class Author(Personne):
 
 class Book:
 
-    def __init__(self, title: str, author: object, quantity : int) -> None:
+    def __init__(self, title: str, author: Author, quantity : int) -> None:
         self.title = title
         self.author = author
         self.quantity = quantity
